@@ -11,9 +11,8 @@ export const useTheme = () => {
     if (typeof window === "undefined") return;
 
     const storedTheme = localStorage.getItem(THEME_STORAGE_KEY) as Theme | null;
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
 
-    const initialTheme: Theme = storedTheme ?? (prefersDark ? "dark" : "light");
+    const initialTheme: Theme = storedTheme ?? "light";
     setTheme(initialTheme);
     document.documentElement.classList.toggle("dark", initialTheme === "dark");
   }, []);
