@@ -19,7 +19,7 @@ const Projects = () => {
       solution: "A fully offline, SLM-powered AI tutor that delivers NCERT lessons, Hindi-English literacy, and voice-based doubt solving on basic smartphones without requiring internet access.",
       metrics: [
         { label: "Offline Capability", value: "100%" },
-        { label: "Device Support", value: "Basic Smartphones" },
+        { label: "Device Support", value: "Basic Phones" },
         { label: "Languages", value: "Hindi + English" }
       ],
       sections: [
@@ -141,8 +141,10 @@ const Projects = () => {
                       <div className="grid grid-cols-3 gap-4">
                         {project.metrics.map((metric) => (
                           <div key={metric.label} className="text-center p-3 rounded-lg bg-muted/50">
-                            <div className="text-2xl font-display font-bold text-primary">{metric.value}</div>
-                            <div className="text-xs text-muted-foreground mt-1">{metric.label}</div>
+                            <div className={`font-display font-bold text-primary break-words ${metric.value.length > 8 ? 'text-base leading-tight' : 'text-2xl'}`}>
+                              {metric.value}
+                            </div>
+                            <div className="text-xs text-muted-foreground mt-1 leading-tight">{metric.label}</div>
                           </div>
                         ))}
                       </div>
