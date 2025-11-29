@@ -14,8 +14,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script type="module" crossorigin src="./assets/index-K7UA7oxx.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-CyPt_i4J.css">
+
+    <!-- Initialize theme early to avoid flash of incorrect theme -->
+    <script>
+      (function() {
+        try {
+          var storageKey = "tg-portfolio-theme";
+          var storedTheme = localStorage.getItem(storageKey);
+          var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+          var theme = storedTheme || (prefersDark ? "dark" : "light");
+          if (theme === "dark") {
+            document.documentElement.classList.add("dark");
+          } else {
+            document.documentElement.classList.remove("dark");
+          }
+        } catch (e) {
+          // fail silently – default theme will be light
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="./assets/index-BWnn0v_o.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-V1BuB5YL.css">
   </head>
 
   <body>
