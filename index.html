@@ -24,7 +24,8 @@
         try {
           var storageKey = "tg-portfolio-theme";
           var storedTheme = localStorage.getItem(storageKey);
-          var theme = storedTheme || "light";
+          // Default to light mode - only use stored theme if it exists and is valid
+          var theme = (storedTheme === "dark" || storedTheme === "light") ? storedTheme : "light";
           if (theme === "dark") {
             document.documentElement.classList.add("dark");
           } else {
@@ -32,6 +33,7 @@
           }
         } catch (e) {
           // fail silently – default theme will be light
+          document.documentElement.classList.remove("dark");
         }
       })();
     </script>
