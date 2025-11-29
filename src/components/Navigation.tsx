@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Menu, X, Download } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import ThemeToggle from "@/components/ThemeToggle";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -26,7 +26,7 @@ const Navigation = () => {
     { label: "Projects", id: "projects" },
     { label: "Skills", id: "skills" },
     { label: "Achievements", id: "achievements" },
-    { label: "Contact", id: "contact" },
+    { label: "Contact", id: "lets-connect" },
   ];
 
   return (
@@ -48,7 +48,7 @@ const Navigation = () => {
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (
               <button
                 key={item.id}
@@ -58,16 +58,7 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <Button 
-              size="sm" 
-              className="gradient-primary text-white shadow-soft"
-              asChild
-            >
-              <a href="/Tanya_Goel_Resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Resume
-              </a>
-            </Button>
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
@@ -98,15 +89,10 @@ const Navigation = () => {
                 {item.label}
               </button>
             ))}
-            <Button 
-              className="w-full gradient-primary text-white shadow-soft"
-              asChild
-            >
-              <a href="/Tanya_Goel_Resume.pdf" download>
-                <Download className="mr-2 h-4 w-4" />
-                Download Resume
-              </a>
-            </Button>
+            <div className="flex items-center justify-between pt-2">
+              <span className="text-sm text-muted-foreground">Theme</span>
+              <ThemeToggle />
+            </div>
           </div>
         </div>
       )}

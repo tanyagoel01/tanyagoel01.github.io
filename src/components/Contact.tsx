@@ -1,9 +1,11 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Linkedin, ExternalLink } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Contact = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   return (
-    <section id="contact" className="py-24 md:py-32 relative overflow-hidden">
+    <section ref={ref} id="contact" className={`py-24 md:py-32 relative overflow-hidden ${isVisible ? 'animate-fade-slide-up' : 'opacity-0'}`}>
       <div className="absolute inset-0 gradient-hero opacity-50" />
       
       <div className="container px-4 relative z-10">
@@ -34,7 +36,7 @@ const Contact = () => {
               className="border-2 border-primary text-primary hover:bg-primary/5 transition-smooth text-base px-8 py-6"
               asChild
             >
-              <a href="https://www.linkedin.com/in/tanya-goel" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.linkedin.com/in/tanya-g-3a9b61167/" target="_blank" rel="noopener noreferrer">
                 <Linkedin className="mr-2 h-5 w-5" />
                 Connect on LinkedIn
                 <ExternalLink className="ml-2 h-4 w-4" />

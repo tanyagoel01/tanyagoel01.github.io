@@ -1,46 +1,48 @@
 import { Award, Sparkles, Users, Code } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Achievements = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const achievements = [
     {
       icon: Award,
-      title: "Star Performer",
+      title: "Star Performer - AmEx",
       organization: "American Express",
-      description: "Recognized for leading digital modernization initiatives that improved data reliability and business KPIs",
+      description: "Recognized for leading digital modernization initiatives that improved data reliability and business KPIs.",
       color: "primary"
     },
     {
       icon: Sparkles,
-      title: "EDDS Spotlight Award",
+      title: "EDDS Spotlight Award - AmEx",
       organization: "American Express",
-      description: "Honored for innovation and cross-functional collaboration in digital analytics",
+      description: "Honored for innovation & cross-functional collaboration in digital analytics.",
       color: "accent"
     },
     {
       icon: Users,
       title: "GHCI Scholar",
       organization: "Grace Hopper Celebration",
-      description: "Selected for contributions in AI-driven product innovation and advancing women in tech",
+      description: "Recognized for active contributions to empowering women in tech and driving inclusive, community-based learning programs.",
       color: "primary"
     },
     {
       icon: Users,
-      title: "Google Women Techmakers Facilitator",
+      title: "Google AI/ML Facilitator",
       organization: "Google",
-      description: "Selected from 10,000+ applicants to lead workshops on ethical AI adoption",
+      description: "Selected from 10,000+ applicants to lead Google's Explore ML sessions, teaching foundational AI and machine learning concepts through hands-on workshops.",
       color: "accent"
     },
     {
       icon: Code,
       title: "Hackathons & Innovation Events",
       organization: "Various",
-      description: "Built LLM-enabled prototypes and social-impact AI tools for real-world use cases",
+      description: "Built LLM-enabled prototypes and social-impact AI tools for real-world use cases.",
       color: "primary"
     }
   ];
 
   return (
-    <section id="achievements" className="py-24 md:py-32 bg-muted/30">
+    <section ref={ref} id="achievements" className={`py-24 md:py-32 bg-muted/30 ${isVisible ? 'animate-fade-slide-up' : 'opacity-0'}`}>
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16 animate-fade-in">
@@ -57,11 +59,11 @@ const Achievements = () => {
               return (
                 <div 
                   key={achievement.title}
-                  className="group p-6 rounded-2xl bg-card shadow-soft hover:shadow-card transition-smooth border border-border/50 animate-scale-in"
+                  className="group p-6 rounded-2xl bg-card shadow-soft border border-border/50 animate-scale-in animate-hover-lift"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="space-y-4">
-                    <div className={`p-4 rounded-xl w-fit ${achievement.color === 'primary' ? 'gradient-primary' : 'bg-gradient-to-br from-accent to-accent/80'}`}>
+                    <div className={`p-4 rounded-xl w-fit ${achievement.color === 'primary' ? 'gradient-primary' : 'bg-gradient-to-br from-accent to-accent/80'} group-hover:scale-110 transition-transform duration-300`}>
                       <Icon className="h-8 w-8 text-white" />
                     </div>
                     

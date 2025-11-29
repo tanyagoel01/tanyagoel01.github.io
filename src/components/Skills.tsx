@@ -1,6 +1,8 @@
 import { Brain, TrendingUp, Users, BarChart3, Code } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const Skills = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const skillCategories = [
     {
       icon: Brain,
@@ -65,7 +67,7 @@ const Skills = () => {
   ];
 
   return (
-    <section id="skills" className="py-24 md:py-32">
+    <section ref={ref} id="skills" className={`py-24 md:py-32 ${isVisible ? 'animate-fade-slide-up' : 'opacity-0'}`}>
       <div className="container px-4">
         <div className="max-w-6xl mx-auto">
           <div className="text-center space-y-4 mb-16 animate-fade-in">
@@ -82,12 +84,12 @@ const Skills = () => {
               return (
                 <div 
                   key={category.title}
-                  className="p-6 rounded-2xl bg-card shadow-soft hover:shadow-card transition-smooth border border-border/50 animate-scale-in"
+                  className="p-6 rounded-2xl bg-card shadow-soft border border-border/50 animate-scale-in animate-hover-lift group"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="space-y-4">
                     <div className="flex items-center gap-3">
-                      <div className={`p-3 rounded-xl ${category.color === 'primary' ? 'gradient-primary' : 'bg-gradient-to-br from-accent to-accent/80'}`}>
+                      <div className={`p-3 rounded-xl ${category.color === 'primary' ? 'gradient-primary' : 'bg-gradient-to-br from-accent to-accent/80'} group-hover:scale-110 transition-transform duration-300`}>
                         <Icon className="h-6 w-6 text-white" />
                       </div>
                       <h3 className="font-display font-bold text-lg">{category.title}</h3>

@@ -8,8 +8,9 @@ import { componentTagger } from "lovable-tagger";
 export default defineConfig(({ mode }) => ({
   base: './',
   server: {
-    host: "::",
+    host: "localhost",
     port: 8080,
+    strictPort: false,
   },
   plugins: [react(), mode === "development" && componentTagger()].filter(Boolean),
   resolve: {
@@ -17,4 +18,5 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  assetsInclude: ["**/*.JPG", "**/*.jpg", "**/*.JPEG", "**/*.jpeg", "**/*.PNG", "**/*.png"],
 }));

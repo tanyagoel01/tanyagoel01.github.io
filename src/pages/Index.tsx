@@ -5,7 +5,7 @@ import Experience from "@/components/Experience";
 import Projects from "@/components/Projects";
 import Skills from "@/components/Skills";
 import Achievements from "@/components/Achievements";
-import Contact from "@/components/Contact";
+import LetsConnect from "@/components/LetsConnect";
 
 const Index = () => {
   return (
@@ -17,7 +17,7 @@ const Index = () => {
       <Projects />
       <Skills />
       <Achievements />
-      <Contact />
+      <LetsConnect />
     </div>
   );
 };

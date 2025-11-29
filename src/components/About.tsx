@@ -1,31 +1,33 @@
 import { Sparkles, Brain, Users, Target } from "lucide-react";
+import { useScrollAnimation } from "@/hooks/use-scroll-animation";
 
 const About = () => {
+  const { ref, isVisible } = useScrollAnimation({ threshold: 0.1 });
   const highlights = [
     {
       icon: Brain,
       title: "AI-First Mindset",
-      description: "I leverage GenAI and LLMs to accelerate product development cycles and create intelligent user experiences"
+      description: "I leverage GenAI and LLMs to accelerate product cycles, improve insight workflows, and power intelligent user experiences."
     },
     {
       icon: Target,
       title: "Impact-Driven",
-      description: "5+ years delivering measurable results: 15% revenue growth, 25% engagement lift, and 40% faster insights"
+      description: "5+ years delivering measurable improvements such as 15% revenue lift, 25% engagement growth, and 40% faster insights for high-scale products."
     },
     {
       icon: Users,
       title: "Cross-Functional Leadership",
-      description: "Expert at aligning engineering, design, and business teams to ship products that solve real customer problems"
+      description: "Align engineering, design, analytics, and business teams to deliver solutions that solve real customer problems."
     },
     {
       icon: Sparkles,
       title: "End-to-End Ownership",
-      description: "From technical foundation to strategic vision, I bridge the gap between what's possible and what's needed"
+      description: "Bridge technical feasibility with strategic direction shaping product vision, driving execution, and ensuring meaningful outcomes."
     }
   ];
 
   return (
-    <section id="about" className="py-24 md:py-32 bg-muted/30">
+    <section ref={ref} id="about" className={`py-24 md:py-32 bg-muted/30 ${isVisible ? 'animate-fade-slide-up' : 'opacity-0'}`}>
       <div className="container px-4">
         <div className="max-w-5xl mx-auto">
           <div className="text-center space-y-4 mb-16 animate-fade-in">
@@ -35,15 +37,11 @@ const About = () => {
 
           <div className="space-y-8 mb-16">
             <p className="text-lg md:text-xl leading-relaxed text-foreground/90 animate-fade-in">
-              I'm a <span className="font-semibold text-primary">Product Manager with 5+ years of experience</span> building digital acquisition and AI-enabled products at American Express. My journey started in engineering, which gave me a deep appreciation for what's technically possible—and more importantly, what creates real user value.
+              I'm a <span className="font-semibold text-primary">Product Manager (5+ years)</span> building AI-enabled acquisition and engagement products at American Express. With an engineering background, I approach problems with a practical, user-focused mindset while leveraging data and GenAI to accelerate impact.
             </p>
-            
+
             <p className="text-lg md:text-xl leading-relaxed text-foreground/90 animate-fade-in">
-              I believe the best products emerge when you truly understand your users and leverage the right technology to solve their problems. That's why I'm obsessed with <span className="font-semibold text-accent">AI-assisted workflows, rapid experimentation, and data-driven decisions</span>. I use GenAI not just in products, but in my own workflow—accelerating insight synthesis, automating requirement drafting, and uncovering patterns that would otherwise take weeks.
-            </p>
-            
-            <p className="text-lg md:text-xl leading-relaxed text-foreground/90 animate-fade-in">
-              Whether I'm <span className="font-semibold">leading product transitions across 4 global markets</span>, <span className="font-semibold">defining KPIs for self-serve analytics dashboards</span>, or <span className="font-semibold">building MVPs from scratch</span>, my north star remains the same: create simple, scalable products that make people's lives better. Because at the end of the day, great product management is about turning complexity into clarity and insights into action.
+              I specialize in <span className="font-semibold text-accent">AI-assisted workflows, rapid experimentation, and insight-driven decision-making</span>, using GenAI to speed up synthesis and prototype iterations. My experience spans <span className="font-semibold">10 global markets</span>, where I've defined KPIs for self-serve analytics, improved decision quality, and shipped multiple MVPs with measurable business outcomes.
             </p>
           </div>
 
@@ -53,11 +51,11 @@ const About = () => {
               return (
                 <div 
                   key={item.title}
-                  className="p-6 rounded-2xl bg-card shadow-soft hover:shadow-card transition-smooth border border-border/50 animate-scale-in"
+                  className="p-6 rounded-2xl bg-card shadow-soft border border-border/50 animate-scale-in animate-hover-lift"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 rounded-xl gradient-primary">
+                    <div className="p-3 rounded-xl gradient-primary group-hover:scale-110 transition-transform duration-300">
                       <Icon className="h-6 w-6 text-white" />
                     </div>
                     <div className="flex-1">
